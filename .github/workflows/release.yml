@@ -38,8 +38,8 @@ jobs:
         with:
           push: true
           tags: |
-            arthurlobopro/snk:${{ github.sha }}
-            arthurlobopro/snk:${{ github.event.inputs.version }}
+            arthurlobo/snk:${{ github.sha }}
+            arthurlobo/snk:${{ github.event.inputs.version }}
 
       - name: update action.yml to point to the newly created docker image
         run: |
