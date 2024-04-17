@@ -73,26 +73,31 @@ export const createSvg = (
   cells: Point[] | null,
   chain: Snake[],
   drawOptions: DrawOptions,
-  animationOptions: Pick<AnimationOptions, "frameDuration">
+  animationOptions: Pick<AnimationOptions, "frameDuration">,
+  hideStack: boolean = false
 ) => {
   const width = (grid.width + 2) * drawOptions.sizeCell;
-  const height = (grid.height + 5) * drawOptions.sizeCell;
+  const height = (grid.height + (hideStack ? 3 : 5)) * drawOptions.sizeCell;
 
   const duration = animationOptions.frameDuration * chain.length;
 
   const livingCells = createLivingCells(grid, chain, cells);
 
-  const elements = [
-    createGrid(livingCells, drawOptions, duration),
+  const elements = []
+
+  elements.push(createGrid(livingCells, drawOptions, duration))
+
+  if (!hideStack) {
     createStack(
       livingCells,
       drawOptions,
       grid.width * drawOptions.sizeCell,
       (grid.height + 2) * drawOptions.sizeCell,
       duration
-    ),
-    createSnake(chain, drawOptions, duration),
-  ];
+    )
+  }
+
+  elements.push(createSnake(chain, drawOptions, duration))
 
   const viewBox = [
     -drawOptions.sizeCell,
