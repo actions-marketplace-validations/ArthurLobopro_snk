@@ -1,12 +1,12 @@
 # snk
 
-[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/platane/platane/main.yml?label=action&style=flat-square)](https://github.com/Platane/Platane/actions/workflows/main.yml)
-[![GitHub release](https://img.shields.io/github/release/platane/snk.svg?style=flat-square)](https://github.com/platane/snk/releases/latest)
-[![GitHub marketplace](https://img.shields.io/badge/marketplace-snake-blue?logo=github&style=flat-square)](https://github.com/marketplace/actions/generate-snake-game-from-github-contribution-grid)
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/ArthurLobopro/arthurlobopro/generate-snake.yml?label=action&style=flat-square)](https://github.com/ArthurLobopro/arthurlobopro/actions/workflows/generate-snake.yml)
+[![GitHub release](https://img.shields.io/github/release/arthurlobopro/snk.svg?style=flat-square)](https://github.com/arthurlobopro/snk/releases/latest)
+[![GitHub marketplace](https://img.shields.io/badge/marketplace-snake-blue?logo=github&style=flat-square)](https://github.com/marketplace/actions/generate-snake-game-from-github-contribution-grid-extended)
 ![type definitions](https://img.shields.io/npm/types/typescript?style=flat-square)
 ![code style](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)
 
-Generates a snake game from a github user contributions graph
+Generates a snake game from a GitHub user contributions graph
 
 <picture>
   <source
@@ -35,7 +35,7 @@ Available as github action. It can automatically generate a new image each day. 
 **github action**
 
 ```yaml
-- uses: Platane/snk@v3
+- uses: ArthurLobopro/svg-only@v0
   with:
     # github user name to read the contribution graph from (**required**)
     # using action context var `github.repository_owner` or specified user
@@ -50,6 +50,7 @@ Available as github action. It can automatically generate a new image each day. 
     #  - color_dots:  Coma separated list of dots color.
     #                 The first one is 0 contribution, then it goes from the low contribution to the highest.
     #                 Exactly 5 colors are expected.
+    #  - hide_stack: On svg builds, you can hide the progressbar by this option
     outputs: |
       dist/github-snake.svg
       dist/github-snake-dark.svg?palette=github-dark
@@ -58,7 +59,7 @@ Available as github action. It can automatically generate a new image each day. 
 
 [example with cron job](https://github.com/Platane/Platane/blob/master/.github/workflows/main.yml#L26-L33)
 
-If you are only interested in generating a svg, consider using this faster action: `uses: Platane/snk/svg-only@v3`
+If you are only interested in generating a svg, consider using this faster action: `uses: ArthurLobopro/snk/svg-only@v0`
 
 **dark mode**
 
