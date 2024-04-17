@@ -30,7 +30,7 @@ export type DrawOptions = {
     colorDotBorder?: string;
     colorSnake?: string;
   };
-  hideStack: boolean
+  hideStack?: boolean
 };
 
 const getCellsFromGrid = ({ width, height }: Grid) =>
