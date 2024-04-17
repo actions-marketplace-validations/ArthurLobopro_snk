@@ -3008,12 +3008,17 @@ const parseEntry = (entry) => {
         if (!(err instanceof SyntaxError))
             throw err;
     }
+    let hideStack = false;
+    if (sp.has("hide_stack")) {
+        hideStack = sp.get("hide_stack") === "true";
+    }
     const drawOptions = {
         sizeDotBorderRadius: 2,
         sizeCell: 16,
         sizeDot: 12,
         ...palettes["default"],
         dark: palettes["default"].dark && { ...palettes["default"].dark },
+        hideStack
     };
     const animationOptions = { step: 1, frameDuration: 100 };
     {
