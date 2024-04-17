@@ -30,6 +30,7 @@ export type DrawOptions = {
     colorDotBorder?: string;
     colorSnake?: string;
   };
+  hideStack: boolean
 };
 
 const getCellsFromGrid = ({ width, height }: Grid) =>
@@ -73,11 +74,10 @@ export const createSvg = (
   cells: Point[] | null,
   chain: Snake[],
   drawOptions: DrawOptions,
-  animationOptions: Pick<AnimationOptions, "frameDuration">,
-  hideStack: boolean = false
+  animationOptions: Pick<AnimationOptions, "frameDuration">
 ) => {
   const width = (grid.width + 2) * drawOptions.sizeCell;
-  const height = (grid.height + (hideStack ? 3 : 5)) * drawOptions.sizeCell;
+  const height = (grid.height + (drawOptions.hideStack ? 3 : 5)) * drawOptions.sizeCell;
 
   const duration = animationOptions.frameDuration * chain.length;
 
@@ -87,7 +87,7 @@ export const createSvg = (
 
   elements.push(createGrid(livingCells, drawOptions, duration))
 
-  if (!hideStack) {
+  if (!drawOptions.hideStack) {
     createStack(
       livingCells,
       drawOptions,

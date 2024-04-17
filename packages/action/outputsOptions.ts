@@ -27,12 +27,19 @@ export const parseEntry = (entry: string) => {
     if (!(err instanceof SyntaxError)) throw err;
   }
 
+  let hideStack = false
+
+  if(sp.has("hide_stack")){
+    hideStack = sp.get("hide_stack") === "true"
+  }
+
   const drawOptions: DrawOptions = {
     sizeDotBorderRadius: 2,
     sizeCell: 16,
     sizeDot: 12,
     ...palettes["default"],
     dark: palettes["default"].dark && { ...palettes["default"].dark },
+    hideStack
   };
   const animationOptions: AnimationOptions = { step: 1, frameDuration: 100 };
 
